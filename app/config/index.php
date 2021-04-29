@@ -1,5 +1,7 @@
 <?php
 
+const APP_URL = [];
+
 const TEST_API = [
     'url' => 'https://test.mgc-loyalty.ru/',
     'login' => 'openbroker',
