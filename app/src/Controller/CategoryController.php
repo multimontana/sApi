@@ -44,7 +44,6 @@ class CategoryController
             $data['response']['code'] = 200;
             $data['response']['data'] = $query->getQuery()->getResult();
         }
-
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 }

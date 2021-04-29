@@ -16,6 +16,7 @@ const DB = [
     'driver'   => 'pdo_mysql',
     'host'     => 'localhost',
     'user'     => 'root',
-    'password' => '#Gb$%strongPswd!howAreYou888%$#',
+//    'password' => '#Gb$%strongPswd!howAreYou888%$#',
+    'password' => 'rootroot',
     'dbname'   => 'shopApi',
 ];
