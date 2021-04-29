@@ -11,3 +11,11 @@ const PROD_API = [
     'login' => 'openbroker',
     'password' => 'yw4Tb8vK'
 ];
+
+const DB = [
+    'driver'   => 'pdo_mysql',
+    'host'     => 'localhost',
+    'user'     => 'root',
+    'password' => '#Gb$%strongPswd!howAreYou888%$#',
+    'dbname'   => 'shopApi',
+];

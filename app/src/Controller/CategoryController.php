@@ -17,9 +17,9 @@ class CategoryController
 
     /**
      * @param $request
-     * @return string
+     * @return void
      */
-    public function getCategories($request): string
+    public function getCategories($request): void
     {
         $data['count'] = 0;
         $data['response'] = [];

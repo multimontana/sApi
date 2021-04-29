@@ -17,9 +17,9 @@ class ProductController
 
     /**
      * @param $request
-     * @return string
+     * @return void
      */
-    public function getProductById($request): string
+    public function getProductById($request): void
     {
         $data['count'] = 0;
         $data['response'] = [];
@@ -56,9 +56,9 @@ class ProductController
 
     /**
      * @param $request
-     * @return string
+     * @return void
      */
-    public function getProductByCategoryName($request): string
+    public function getProductByCategoryName($request): void
     {
         $data['count'] = 0;
         $data['response']['success'] = null;
