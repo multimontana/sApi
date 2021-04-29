@@ -15,13 +15,13 @@ if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/categ
 
 if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/products/by/category') {
     $productController = new ProductController($entityManager);
-    $productController->getProductById($request);
+    $productController->getProductByCategoryName($request);
     return;
 };
 
 if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/product') {
     $productController = new ProductController($entityManager);
-    $productController->getProductByCategoryName($request);
+    $productController->getProductById($request);
     return;
 };
 include_once './views/index.php';

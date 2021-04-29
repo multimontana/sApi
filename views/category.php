@@ -28,11 +28,11 @@
                 console.log(products)
                 let productsHtml = ''
                 for (let i = 0; i < products.length; i++) {
-                    productsHtml += '<div class="card_info col-sm-6 col-md-4 mb-4 d-flex align-items-center justify-content-center product-item"><div class="card  p-0 card_item w-100"><img class="card-img-top" src="'+ products[i].picture +'" alt="Card image cap"><div class="card-body"><h5 class="card-title">' + products[i].name +'</h5><p class="card-text">' + products[i].vendor +'</p><button class="btn  btn_item">Информация</button></div></div></div>'
+                    productsHtml += '<div class="card_info col-sm-6 col-md-4 mb-4 d-flex align-items-center justify-content-center"><div class="card  p-0 card_item w-100"><img class="card-img-top" src="'+ products[i].picture +'" alt="Card image cap"><div class="card-body"><h5 class="card-title">' + products[i].name +'</h5><p class="card-text">' + products[i].vendor +'</p><button id="'+ products[i].id +'" class="btn  btn_item product-item-info">Информация</button></div></div></div>'
                 }
                 $('#products').html(productsHtml)
-                $('.category-item').click(function() {
-                    window.location.href = `/product?name=`
+                $('.product-item-info').click(function() {
+                    window.location.href = `/product?id=${$(this).attr('id')}`
                 })
             }
         });

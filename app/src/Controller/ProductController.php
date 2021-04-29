@@ -19,7 +19,7 @@ class ProductController
      * @param $request
      * @return void
      */
-    public function getProductById($request): void
+    public function getProductByCategoryName($request): void
     {
         $data['count'] = 0;
         $data['response'] = [];
@@ -35,7 +35,7 @@ class ProductController
                 ->setParameter('category', $request->get('cn'));
         }
 
-        $data['count'] = $query->getQuery()->getArrayResult();
+        $data['count'] = count($query->getQuery()->getArrayResult());
 
         if ($query) {
             if ($request->get('offset')) {
@@ -58,7 +58,7 @@ class ProductController
      * @param $request
      * @return void
      */
-    public function getProductByCategoryName($request): void
+    public function getProductById($request): void
     {
         $data['count'] = 0;
         $data['response']['success'] = null;
@@ -70,7 +70,17 @@ class ProductController
             ->where('p.id = :id')
             ->setParameter('id', $request->get('id'));
 
+        $data['count'] = count($query->getQuery()->getArrayResult());
+
         if ($query) {
+            if ($request->get('offset')) {
+                $query = $query->setFirstResult($request->get('offset'));
+            }
+
+            if ($request->get('limit')) {
+                $query = $query->setMaxResults($request->get('limit'));
+            }
+
             $data['response']['success'] = true;
             $data['response']['code'] = 200;
             $data['response']['data'] = $query->getQuery()->getArrayResult();

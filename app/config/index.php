@@ -1,5 +1,7 @@
 <?php
 
+const APP_URL = [];
+
 const TEST_API = [
     'url' => 'https://test.mgc-loyalty.ru/',
     'login' => 'openbroker',
@@ -16,7 +18,7 @@ const DB = [
     'driver'   => 'pdo_mysql',
     'host'     => 'localhost',
     'user'     => 'root',
-//    'password' => '#Gb$%strongPswd!howAreYou888%$#',
-    'password' => 'rootroot',
+    'password' => '#Gb$%strongPswd!howAreYou888%$#',
+//    'password' => 'rootroot',
     'dbname'   => 'shopApi',
 ];

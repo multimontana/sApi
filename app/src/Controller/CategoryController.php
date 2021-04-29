@@ -25,25 +25,31 @@ class CategoryController
         $data['response'] = [];
         $data['response']['success'] = null;
         $data['response']['error'] = null;
-        $query = $this->entityManager->createQueryBuilder()
-            ->select('c')
-            ->from('Loyalty\Entity\Category', 'c', 'c.name');
 
-        $data['count'] = count($query->getQuery()->getResult());
+        $sql = 'SELECT ParentType.id as ParentId, ParentType.name as ParentName, ChildType.name as ChildName
+                FROM Loyalty\Entity\Category ChildType
+                JOIN Loyalty\Entity\Category ParentType WHERE ChildType.parent_id = ParentType.id';
 
-        if ($query) {
-            if ($request->get('offset')) {
-                $query = $query->setFirstResult($request->get('offset'));
+        $query = $this->entityManager->createQuery($sql);
+        $categoryParentAndChildes = $query->getResult();
+
+        $data = [];
+        for($i = 0; $i < count($categoryParentAndChildes) -1; $i++) {
+            if ($categoryParentAndChildes[$i]['ParentId'] === $categoryParentAndChildes[$i + 1]['ParentId']) {
+                $data['response']['data'][$categoryParentAndChildes[$i]['ParentName']][] = $categoryParentAndChildes[$i]['ChildName'];
             }
-
-            if ($request->get('limit')) {
-                $query = $query->setMaxResults($request->get('limit'));
-            }
-
-            $data['response']['success'] = true;
-            $data['response']['code'] = 200;
-            $data['response']['data'] = $query->getQuery()->getResult();
         }
+        $data['count'] = count($categoryParentAndChildes);
+
+        $data['response']['success'] = true;
+        $data['response']['code'] = 200;
+
+        $data['response']['data'] = array_slice(
+            $data['response']['data'],
+            $request->get('offset') ?? null,
+            $request->get('limit') ?? null
+        );
+
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 }
