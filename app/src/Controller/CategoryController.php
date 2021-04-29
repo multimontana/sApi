@@ -45,6 +45,12 @@ class CategoryController
         $data['response']['success'] = true;
         $data['response']['code'] = 200;
 
+        $data['response']['data'] = array_slice(
+            $data['response']['data'],
+            $request->get('offset') ?? null,
+            $request->get('limit') ?? null
+        );
+
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 }
