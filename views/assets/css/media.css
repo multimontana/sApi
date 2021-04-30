@@ -47,6 +47,9 @@
   .info__item-content h1{
     font-size: 1.8rem;
   }
+  .card-body .card-title {
+    font-size: 1.3rem;
+  }
 }
 @media only screen and (max-width: 480px){
   .info_item {
