@@ -1,27 +1,11 @@
 <?php
 
-use Loyalty\Controller\CategoryController;
-use Loyalty\Controller\ProductController;
-
 require_once __DIR__ . '/vendor/autoload.php';
+//app configuration file path
 require_once __DIR__ . '/app/config/index.php';
+//Doctrine and Db connection file
 require_once __DIR__ . '/bootstrap.php';
-
-if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/categories') {
-    $categoryController = new CategoryController($entityManager);
-    $categoryController->getCategories($request);
-    return;
-};
-
-if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/products/by/category') {
-    $productController = new ProductController($entityManager);
-    $productController->getProductByCategoryName($request);
-    return;
-};
-
-if($request->getMethod() === "GET" && $request->getPathInfo() === '/v1/get/product') {
-    $productController = new ProductController($entityManager);
-    $productController->getProductById($request);
-    return;
-};
-include_once './views/index.php';
+//App routing
+require_once __DIR__ . '/routes/index.php';
+//App views
+require_once __DIR__ . '/views/index.php';

@@ -39,6 +39,7 @@ class CategoryController
                 $data['response']['data'][$categoryParentAndChildes[$i]['ParentName']][] = $categoryParentAndChildes[$i]['ChildName'];
             }
         }
+
         $data['count'] = count($categoryParentAndChildes);
 
         $data['response']['success'] = true;
